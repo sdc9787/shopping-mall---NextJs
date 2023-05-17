@@ -17,7 +17,7 @@ export default function Home() {
           <a className="navbar-a" href="#">
             장바구니
           </a>
-          <a className="navbar-a" href="#">
+          <a className="navbar-a" href="/pm">
             상품관리
           </a>
         </div>

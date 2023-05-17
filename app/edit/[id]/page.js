@@ -36,22 +36,22 @@ export default async function Edit(props) {
         </div>
       </div>
 
-      <h4 className="create-title">상품등록</h4>
+      <h4 className="create-title">상품수정</h4>
       <div className="create-frame">
         <div className="create-img">
           <img src="https://assets.burberry.com/is/image/Burberryltd/B6235150-2B92-4C8B-AF80-2708891A87D1?$BBY_V2_SL_1x1$&wid=1251&hei=1251" />
         </div>
         <form className="create-form" action="/api/edit" method="POST">
           <span>카테고리</span>
-          <input name="category" placeholder="카테고리" />
+          <input name="category" placeholder="카테고리" defaultValue={result.category} />
           <span>상품명</span>
-          <input name="name" placeholder="상품명" />
+          <input name="name" placeholder="상품명" defaultValue={result.name} />
           <span>가격</span>
-          <input name="price" placeholder="가격" />
+          <input name="price" placeholder="가격" defaultValue={result.price} />
           <span>수량</span>
-          <input name="count" placeholder="수량" />
+          <input name="count" placeholder="수량" defaultValue={result.count} />
           <input style={{ display: "none" }} name="p_id" placeholder="글내용" />
-          <button type="submit">상품등록</button>
+          <button type="submit">상품수정</button>
         </form>
       </div>
     </div>
