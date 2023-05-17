@@ -1,0 +1,59 @@
+.pm-active {
+  font-weight: 700;
+  background-color: #c7bde2;
+}
+
+.list-bg {
+  background: rgb(249, 250, 255);
+  padding: 10px;
+}
+.list-item {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 5px;
+  box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
+}
+.list-item h4 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+.list-item p {
+  color: grey;
+  margin: 5px 0px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.pm-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 20px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  border-bottom: 1px solid gray;
+}
+
+.pm-create {
+  border: #c7bde2 1px solid;
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  padding: 12px 10px;
+  border-radius: 10px;
+  transition: 0.15s all ease-in-out;
+}
+
+.pm-create:hover {
+  font-weight: 700;
+  background-color: white;
+  border: 1px solid gray;
+}

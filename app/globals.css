@@ -1,0 +1,11 @@
+@import url("./style/reset.module.css");
+@import url("./style/navbar.module.css");
+@import url("./style/login.module.css");
+@import url("./style/signup.module.css");
+@import url("./style//pm.module.css");
+@import url("./style//create.module.css");
+
+html {
+  font-family: "Roboto", "Noto Sans KR";
+  background-color: #fcfcfe;
+}
