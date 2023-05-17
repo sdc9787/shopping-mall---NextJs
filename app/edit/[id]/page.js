@@ -6,6 +6,7 @@ export default async function Edit(props) {
   const db = (await connectDB).db("forum"); //데이터 베이스 접근
   let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id) });
 
+  console.log(result);
   return (
     <div>
       <div className="navbar">
@@ -50,7 +51,9 @@ export default async function Edit(props) {
           <input name="price" placeholder="가격" defaultValue={result.price} />
           <span>수량</span>
           <input name="count" placeholder="수량" defaultValue={result.count} />
+          <input style={{ display: "none" }} name="_id" defaultValue={props.params.id} />
           <input style={{ display: "none" }} name="p_id" placeholder="글내용" />
+
           <button type="submit">상품수정</button>
         </form>
       </div>
