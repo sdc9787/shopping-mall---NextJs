@@ -35,8 +35,18 @@ export default async function Home() {
           </form>
         </div>
       </div>
-      <div className="main-pm-frame">
-        <PmList result={result} />
+
+      <div className="category-pm-frame">
+        <div className="category">
+          <span>상의</span>
+          <span>하의</span>
+          <span>신발</span>
+          <span>신발</span>
+          <span>아우터</span>
+        </div>
+        <div className="main-pm-frame">
+          <PmList result={result} />
+        </div>
       </div>
     </main>
   );
