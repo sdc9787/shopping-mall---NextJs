@@ -3,7 +3,6 @@ import { ObjectId } from "mongodb";
 
 export default async function handler(a, b) {
   if (a.method == "POST") {
-    console.log(a.body);
     let c = {
       category: a.body.category,
       name: a.body.name,

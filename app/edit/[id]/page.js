@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default async function Edit(props) {
   const db = (await connectDB).db("forum"); //데이터 베이스 접근
-  let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id.toString()) });
+  let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id) });
 
   return (
     <div>
@@ -39,7 +39,7 @@ export default async function Edit(props) {
       <div className="pm-title">
         <span>상품수정</span>
         <form action="/api/delate" method="POST">
-          <input style={{ display: "none" }} name="_id" defaultValue={props.params.id.toString()} />
+          <input style={{ display: "none" }} name="_id" defaultValue={result._id.toString()} />
           <button type="submit" className="pm-create pm-delete">
             상품삭제
           </button>
