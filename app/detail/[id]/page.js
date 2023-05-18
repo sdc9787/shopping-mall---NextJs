@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default async function Detail(props) {
   const db = (await connectDB).db("forum"); //데이터 베이스 접근
-  let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id) });
+  let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id.toString()) });
   return (
     <div className="pm-frame">
       <div className="navbar">

@@ -62,3 +62,9 @@
   background-color: #c7bde2;
   cursor: pointer;
 }
+
+.pm-delete:hover {
+  cursor: pointer;
+  color: red;
+  font-weight: 700;
+}
