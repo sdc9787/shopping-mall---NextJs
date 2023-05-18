@@ -11,7 +11,7 @@ export default async function Home() {
       <div className="navbar">
         <div className="navbar-table">
           <Link className="navbar-title" href="/">
-            THESINSA
+            GG
           </Link>
           <Link className="navbar-a" href="#">
             마이페이지
