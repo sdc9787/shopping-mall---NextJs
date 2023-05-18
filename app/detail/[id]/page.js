@@ -9,7 +9,7 @@ export default async function Detail(props) {
     <div className="pm-frame">
       <div className="navbar">
         <div className="navbar-table">
-          <Link className="navbar-title" href="index.html">
+          <Link className="navbar-title" href="/">
             THESINSA
           </Link>
           <Link className="navbar-a" href="#">

@@ -12,21 +12,21 @@ export default async function Pm() {
     <div className="pm-frame">
       <div className="navbar">
         <div className="navbar-table">
-          <a className="navbar-title" href="index.html">
+          <Link className="navbar-title" href="/">
             THESINSA
-          </a>
-          <a className="navbar-a" href="#">
+          </Link>
+          <Link className="navbar-a" href="#">
             마이페이지
-          </a>
-          <a className="navbar-a" href="#">
+          </Link>
+          <Link className="navbar-a" href="#">
             카테고리
-          </a>
-          <a className="navbar-a" href="#">
+          </Link>
+          <Link className="navbar-a" href="#">
             장바구니
-          </a>
-          <a className="navbar-a pm-active" href="#">
+          </Link>
+          <Link className="navbar-a pm-active" href="/pm">
             상품관리
-          </a>
+          </Link>
         </div>
 
         <div className="navber-login-sginup-search">

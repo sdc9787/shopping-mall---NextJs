@@ -9,3 +9,28 @@ html {
   font-family: "Roboto", "Noto Sans KR";
   background-color: #fcfcfe;
 }
+
+.main-pm-frame {
+  margin-left: 300px;
+}
+
+.main-pm-list {
+  display: flex;
+
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.pm-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.pm-list img {
+  border: 3px solid gray;
+  border-radius: 20px;
+  width: 250px;
+}

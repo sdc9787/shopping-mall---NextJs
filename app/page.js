@@ -1,25 +1,30 @@
+import { connectDB } from "@/util/database";
 import Link from "next/link";
+import PmList from "./PmList";
 
-export default function Home() {
+export default async function Home() {
+  const db = (await connectDB).db("forum"); //데이터 베이스 접근
+  let result = await db.collection("post").find().toArray();
+
   return (
     <main>
       <div className="navbar">
         <div className="navbar-table">
-          <a className="navbar-title" href="index.html">
+          <Link className="navbar-title" href="/">
             THESINSA
-          </a>
-          <a className="navbar-a" href="#">
+          </Link>
+          <Link className="navbar-a" href="#">
             마이페이지
-          </a>
-          <a className="navbar-a" href="#">
+          </Link>
+          <Link className="navbar-a" href="#">
             카테고리
-          </a>
-          <a className="navbar-a" href="#">
+          </Link>
+          <Link className="navbar-a" href="#">
             장바구니
-          </a>
-          <a className="navbar-a" href="/pm">
+          </Link>
+          <Link className="navbar-a" href="/pm">
             상품관리
-          </a>
+          </Link>
         </div>
 
         <div className="navber-login-sginup-search">
@@ -29,6 +34,9 @@ export default function Home() {
             <input className="search" placeholder="검색" type="search" />
           </form>
         </div>
+      </div>
+      <div className="main-pm-frame">
+        <PmList result={result} />
       </div>
     </main>
   );

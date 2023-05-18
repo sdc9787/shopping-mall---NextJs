@@ -6,12 +6,11 @@ export default async function Edit(props) {
   const db = (await connectDB).db("forum"); //데이터 베이스 접근
   let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id) });
 
-  console.log(result);
   return (
     <div>
       <div className="navbar">
         <div className="navbar-table">
-          <Link className="navbar-title" href="index.html">
+          <Link className="navbar-title" href="/">
             THESINSA
           </Link>
           <Link className="navbar-a" href="#">
@@ -37,7 +36,9 @@ export default async function Edit(props) {
         </div>
       </div>
 
-      <h4 className="create-title">상품수정</h4>
+      <div className="create-title">
+        <span>상품수정</span>
+      </div>
       <div className="create-frame">
         <div className="create-img">
           <img src="https://assets.burberry.com/is/image/Burberryltd/B6235150-2B92-4C8B-AF80-2708891A87D1?$BBY_V2_SL_1x1$&wid=1251&hei=1251" />
