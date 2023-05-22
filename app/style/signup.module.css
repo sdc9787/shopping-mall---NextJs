@@ -51,12 +51,25 @@
   align-items: center;
 }
 
-.signup-main form input {
+.signup-main form input[type="text"] {
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid black;
   width: 200px;
+}
+
+.signup-main form input[type="password"] {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 200px;
+}
+
+.radio-input {
+  display: flex;
+  flex-direction: row;
 }
 
 .signup-main form input:focus {

@@ -5,6 +5,10 @@ import PmList from "./PmList";
 export default async function Home() {
   const db = (await connectDB).db("forum"); //데이터 베이스 접근
   let result = await db.collection("post").find().toArray();
+  result = result.map((a) => {
+    a._id = a._id.toString();
+    return a;
+  });
 
   return (
     <main>

@@ -7,7 +7,10 @@ export const dynamic = "force-dynamic";
 export default async function Pm() {
   const db = (await connectDB).db("forum"); //데이터 베이스 접근
   let result = await db.collection("post").find().toArray();
-
+  result = result.map((a) => {
+    a._id = a._id.toString();
+    return a;
+  });
   return (
     <div className="pm-frame">
       <div className="navbar">
