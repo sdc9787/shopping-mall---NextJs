@@ -13,18 +13,14 @@ export default function Login() {
         </Link>
         <span className="signup">Sign Up</span>
         <form method="POST" action="/api/auth/signup">
-          <span>ID</span>
-          <input name="name" placeholder="ID" type="text" />
+          <span>name</span>
+          <input name="name" placeholder="name" type="text" />
+          <span>email</span>
+          <input name="email" placeholder="email" type="text" />
           <span>Password</span>
           <input name="password" placeholder="PASSWORD" type="password" />
           <span>Check Password</span>
           <input name="checkpassword" placeholder="CHECK PASSWORD" type="password" />
-          <div className="radio-input">
-            <input id="a" type="radio" name="c" value="1" checked />
-            <label htmlFor="a">소비자</label>
-            <input id="b" type="radio" name="c" value="2" />
-            <label htmlFor="b">판매자</label>
-          </div>
           <button>회원가입</button>
         </form>
         <Link className="login-link" href="/login">

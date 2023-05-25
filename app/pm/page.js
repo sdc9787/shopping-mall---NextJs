@@ -1,16 +1,24 @@
 import Link from "next/link";
 import ListItem from "./ListItem";
 import { connectDB } from "@/util/database";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import { LogOutBtn } from "../LogOutBtn";
+import LoginBtn from "../LoginBtn";
+import { redirect } from "next/dist/server/api-utils";
 
 export const dynamic = "force-dynamic";
 
 export default async function Pm() {
-  const db = (await connectDB).db("forum"); //데이터 베이스 접근
-  let result = await db.collection("post").find().toArray();
+  let session = await getServerSession(authOptions);
+  const db = (await connectDB).db("product"); //데이터 베이스 접근
+  let result = await db.collection("info").find({ email: session.user.email }).toArray();
+  console.log(result);
   result = result.map((a) => {
     a._id = a._id.toString();
     return a;
   });
+
   return (
     <div className="pm-frame">
       <div className="navbar">
@@ -33,8 +41,15 @@ export default async function Pm() {
         </div>
 
         <div className="navber-login-sginup-search">
-          <Link href={"/login"}>로그인</Link>
-          <Link href={"/signup"}>회원가입</Link>
+          {session ? (
+            <span className="session-login">
+              <span>{session.user.name}님</span> <LogOutBtn />{" "}
+            </span>
+          ) : (
+            <LoginBtn></LoginBtn>
+          )}
+          {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
+
           <form>
             <input className="search" placeholder="검색" type="search" />
           </form>

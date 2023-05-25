@@ -56,6 +56,34 @@
   transition: 0.15s all ease-in-out;
 }
 
+.navber-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 10px;
+  border-radius: 10px;
+  transition: 0.15s all ease-in-out;
+  background-color: #dacffa;
+  border: 0px solid #dacffa;
+  font-weight: 500;
+  font-family: "Noto Sans KR";
+  height: 40px;
+}
+.navber-login span {
+  height: 26px;
+}
+
+.navber-login:hover {
+  font-weight: 700;
+  background-color: #c7bde2;
+  cursor: pointer;
+}
+
 .navber-login-sginup-search a:hover {
   font-weight: 700;
   background-color: #c7bde2;
@@ -64,4 +92,16 @@
 .search {
   margin: 0px 10px;
   border-radius: 5px;
+}
+
+.session-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.session-login span {
+  height: 15px;
+  font-family: "Noto Sans KR";
+  font-weight: 500;
 }

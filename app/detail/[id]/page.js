@@ -1,10 +1,12 @@
+import { LogOutBtn } from "@/app/LogOutBtn";
+import LoginBtn from "@/app/LoginBtn";
 import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
 import Link from "next/link";
 
 export default async function Detail(props) {
-  const db = (await connectDB).db("forum"); //데이터 베이스 접근
-  let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id.toString()) });
+  const db = (await connectDB).db("product"); //데이터 베이스 접근
+  let result = await db.collection("info").findOne({ _id: new ObjectId(props.params.id.toString()) });
   return (
     <div className="pm-frame">
       <div className="navbar">
@@ -27,8 +29,15 @@ export default async function Detail(props) {
         </div>
 
         <div className="navber-login-sginup-search">
-          <Link href={"/login"}>로그인</Link>
-          <Link href={"/signup"}>회원가입</Link>
+          {session ? (
+            <span className="session-login">
+              <span>{session.user.name}님</span> <LogOutBtn />{" "}
+            </span>
+          ) : (
+            <LoginBtn></LoginBtn>
+          )}
+          {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
+
           <form>
             <input className="search" placeholder="검색" type="search" />
           </form>

@@ -1,6 +1,11 @@
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { LogOutBtn } from "../LogOutBtn";
+import LoginBtn from "../LoginBtn";
 
-export default function Create() {
+export default async function Create() {
+  let session = await getServerSession(authOptions);
   return (
     <div>
       <div className="navbar">
@@ -23,8 +28,15 @@ export default function Create() {
         </div>
 
         <div className="navber-login-sginup-search">
-          <Link href={"/login"}>로그인</Link>
-          <Link href={"/signup"}>회원가입</Link>
+          {session ? (
+            <span className="session-login">
+              <span>{session.user.name}님</span> <LogOutBtn />{" "}
+            </span>
+          ) : (
+            <LoginBtn></LoginBtn>
+          )}
+          {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
+
           <form>
             <input className="search" placeholder="검색" type="search" />
           </form>
@@ -45,7 +57,7 @@ export default function Create() {
           <input name="price" placeholder="가격" />
           <span>수량</span>
           <input name="count" placeholder="수량" />
-          <input style={{ display: "none" }} name="p_id" placeholder="글내용" />
+          <input style={{ display: "none" }} name="email" value={session.user.email} defaultValue={""} />
           <button type="submit">상품등록</button>
         </form>
       </div>
