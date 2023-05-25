@@ -4,6 +4,7 @@
 @import url("./style/signup.module.css");
 @import url("./style//pm.module.css");
 @import url("./style//create.module.css");
+@import url("./style//buy.module.css");
 
 html {
   font-family: "Roboto", "Noto Sans KR";

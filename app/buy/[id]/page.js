@@ -1,14 +1,17 @@
 import { LogOutBtn } from "@/app/LogOutBtn";
 import LoginBtn from "@/app/LoginBtn";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-export default async function Detail(props) {
+export default async function Edit(props) {
   const db = (await connectDB).db("product"); //데이터 베이스 접근
-  let result = await db.collection("info").findOne({ _id: new ObjectId(props.params.id.toString()) });
+  let result = await db.collection("info").findOne({ _id: new ObjectId(props.params.id) });
+  let session = await getServerSession(authOptions);
   return (
-    <div className="pm-frame">
+    <div>
       <div className="navbar">
         <div className="navbar-table">
           {session ? (
@@ -64,6 +67,31 @@ export default async function Detail(props) {
 
           <form>
             <input className="search" placeholder="검색" type="search" />
+          </form>
+        </div>
+      </div>
+
+      <div className="pm-title">
+        <span>상품 구매</span>
+      </div>
+      <div className="create-frame">
+        <div className="create-img">
+          <img src="https://assets.burberry.com/is/image/Burberryltd/B6235150-2B92-4C8B-AF80-2708891A87D1?$BBY_V2_SL_1x1$&wid=1251&hei=1251" />
+        </div>
+
+        <div className="pro-info-frame">
+          <div className="pro-info">
+            <span>판매자 정보</span>
+            <span>판매자 : {result.nickname}</span>
+            <span>이메일 : {result.email}</span>
+            <span>상품 정보</span>
+            <span>카테고리 : {result.category}</span>
+            <span>상품명 : {result.name}</span>
+            <span>가격 : {result.price}</span>
+            <span>수량 : {result.count}</span>
+          </div>
+          <form action="/api/buy" method="POST">
+            <button>상품 구매</button>
           </form>
         </div>
       </div>

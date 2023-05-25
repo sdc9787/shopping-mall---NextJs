@@ -1,0 +1,24 @@
+.pro-info-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pro-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pro-info span {
+  font-size: 20px;
+  margin: 25px;
+}
+
+.pro-info span:first-child {
+  font-weight: 900;
+  font-size: 30px;
+  margin-bottom: 5px;
+}

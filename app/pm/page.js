@@ -23,21 +23,45 @@ export default async function Pm() {
     <div className="pm-frame">
       <div className="navbar">
         <div className="navbar-table">
-          <Link className="navbar-title" href="/">
-            THESINSA
-          </Link>
-          <Link className="navbar-a" href="#">
-            마이페이지
-          </Link>
-          <Link className="navbar-a" href="#">
-            카테고리
-          </Link>
-          <Link className="navbar-a" href="#">
-            장바구니
-          </Link>
-          <Link className="navbar-a pm-active" href="/pm">
-            상품관리
-          </Link>
+          {session ? (
+            <Link className="navbar-title" href="/">
+              THESINSA
+            </Link>
+          ) : (
+            <Link className="navbar-title" href="/">
+              THESINSA
+            </Link>
+          )}
+
+          {session ? (
+            <Link className="navbar-a" href="/mypage">
+              마이페이지
+            </Link>
+          ) : (
+            <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
+              마이페이지
+            </Link>
+          )}
+
+          {session ? (
+            <Link className="navbar-a" href="/basket">
+              장바구니
+            </Link>
+          ) : (
+            <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
+              장바구니
+            </Link>
+          )}
+
+          {session ? (
+            <Link className="navbar-a" href="/pm">
+              상품관리
+            </Link>
+          ) : (
+            <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
+              상품관리
+            </Link>
+          )}
         </div>
 
         <div className="navber-login-sginup-search">

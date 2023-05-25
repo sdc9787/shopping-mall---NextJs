@@ -10,21 +10,45 @@ export default async function Create() {
     <div>
       <div className="navbar">
         <div className="navbar-table">
-          <Link className="navbar-title" href="/">
-            THESINSA
-          </Link>
-          <Link className="navbar-a" href="#">
-            마이페이지
-          </Link>
-          <Link className="navbar-a" href="#">
-            카테고리
-          </Link>
-          <Link className="navbar-a" href="#">
-            장바구니
-          </Link>
-          <Link className="navbar-a pm-active" href="/pm">
-            상품관리
-          </Link>
+          {session ? (
+            <Link className="navbar-title" href="/">
+              THESINSA
+            </Link>
+          ) : (
+            <Link className="navbar-title" href="/">
+              THESINSA
+            </Link>
+          )}
+
+          {session ? (
+            <Link className="navbar-a" href="/mypage">
+              마이페이지
+            </Link>
+          ) : (
+            <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
+              마이페이지
+            </Link>
+          )}
+
+          {session ? (
+            <Link className="navbar-a" href="/basket">
+              장바구니
+            </Link>
+          ) : (
+            <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
+              장바구니
+            </Link>
+          )}
+
+          {session ? (
+            <Link className="navbar-a" href="/pm">
+              상품관리
+            </Link>
+          ) : (
+            <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
+              상품관리
+            </Link>
+          )}
         </div>
 
         <div className="navber-login-sginup-search">
@@ -50,7 +74,13 @@ export default async function Create() {
         </div>
         <form className="create-form" action="/api/new" method="POST">
           <span>카테고리</span>
-          <input name="category" placeholder="카테고리" />
+          <select name="category" className="category-select">
+            <option value="상의">상의</option>
+            <option value="하의">하의</option>
+            <option value="신발">신발</option>
+            <option value="원피스">원피스</option>
+            <option value="아우터">아우터</option>
+          </select>
           <span>상품명</span>
           <input name="name" placeholder="상품명" />
           <span>가격</span>
@@ -58,6 +88,7 @@ export default async function Create() {
           <span>수량</span>
           <input name="count" placeholder="수량" />
           <input style={{ display: "none" }} name="email" value={session.user.email} defaultValue={""} />
+          <input style={{ display: "none" }} name="nickname" value={session.user.name} defaultValue={""} />
           <button type="submit">상품등록</button>
         </form>
       </div>
