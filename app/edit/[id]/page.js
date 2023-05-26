@@ -94,8 +94,8 @@ export default async function Edit(props) {
           <span>수량</span>
           <input name="count" placeholder="수량" defaultValue={result.count} />
           <input style={{ display: "none" }} name="_id" defaultValue={result._id.toString()} />
-          <input style={{ display: "none" }} name="email" placeholder="" />
-          <input style={{ display: "none" }} name="nickname" placeholder={result.nickname} />
+          <input style={{ display: "none" }} name="email" defaultValue={result.email} />
+          <input style={{ display: "none" }} name="nickname" defaultValue={result.nickname} />
 
           <button type="submit">상품수정</button>
         </form>

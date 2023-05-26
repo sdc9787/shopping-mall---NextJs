@@ -74,10 +74,12 @@ export default async function Create() {
           <img src="https://assets.burberry.com/is/image/Burberryltd/B6235150-2B92-4C8B-AF80-2708891A87D1?$BBY_V2_SL_1x1$&wid=1251&hei=1251" />
         </div>
         <form className="create-form" action="/api/mypage" method="POST">
+          <span style={{ fontWeight: "700" }}>현재 비밀번호</span>
           <input name="password" type="password" />
+          <span style={{ fontWeight: "700" }}>변경할 비밀번호</span>
           <input name="newpassword" type="password" />
-          <input name="session" type="text" value={session.user.password} />
-          <input name="id" type="text" value={session.user.email} />
+          <input style={{ display: "none" }} name="session" type="text" value={session.user.password} />
+          <input style={{ display: "none" }} name="id" type="text" value={session.user.email} />
 
           <button type="submit">상품등록</button>
         </form>
