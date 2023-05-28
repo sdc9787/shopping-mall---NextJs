@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { LogOutBtn } from "../LogOutBtn";
 import LoginBtn from "../LoginBtn";
-import Img from "./img";
 
 export default async function Create() {
   let session = await getServerSession(authOptions);
@@ -73,7 +72,6 @@ export default async function Create() {
         <div className="create-img">
           <img src="https://assets.burberry.com/is/image/Burberryltd/B6235150-2B92-4C8B-AF80-2708891A87D1?$BBY_V2_SL_1x1$&wid=1251&hei=1251" />
         </div>
-        <Img></Img>
         <form className="create-form" action="/api/new" method="POST">
           <span>카테고리</span>
           <select name="category" className="category-select">

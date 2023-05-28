@@ -20,7 +20,7 @@ html {
 
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
 }
 .pm-list {
   display: flex;
@@ -28,6 +28,7 @@ html {
   justify-content: center;
   align-items: center;
   margin: 20px;
+  margin-right: 80px;
 }
 
 .pm-list img {

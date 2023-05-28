@@ -6,7 +6,7 @@ export function LogOutBtn() {
     <button
       className="navber-login"
       onClick={() => {
-        signOut();
+        signOut({ callbackUrl: "http://localhost:3000/" });
       }}
     >
       로그아웃
