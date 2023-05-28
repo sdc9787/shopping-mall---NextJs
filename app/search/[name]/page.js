@@ -1,26 +1,27 @@
 import Link from "next/link";
-import ListItem from "./ListItem";
+import SearchItem from "./SearchItem";
 import { connectDB } from "@/util/database";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
-import { LogOutBtn } from "../LogOutBtn";
-import LoginBtn from "../LoginBtn";
+
 import { redirect } from "next/dist/server/api-utils";
+import { LogOutBtn } from "@/app/LogOutBtn";
+import LoginBtn from "@/app/LoginBtn";
 
 export const dynamic = "force-dynamic";
 
-export default async function Pm() {
+export default async function Search(props) {
   let session = await getServerSession(authOptions);
   const db = (await connectDB).db("product"); //데이터 베이스 접근
-  let result = await db.collection("info").find({ email: session.user.email }).toArray();
+  let result = await db.collection("info").find({ name: props.params.name }).toArray();
   console.log(result);
   result = result.map((a) => {
-    a._id = a._id.toString();
+    a.name = a.name.toString();
     return a;
   });
 
   return (
-    <div className="pm-frame">
+    <main>
       <div className="navbar">
         <div className="navbar-table">
           {session ? (
@@ -44,13 +45,9 @@ export default async function Pm() {
           )}
 
           {session ? (
-            session.user.root == 1 ? (
-              <Link className="navbar-a" href="/basket">
-                장바구니
-              </Link>
-            ) : (
-              <div></div>
-            )
+            <Link className="navbar-a" href="/basket">
+              장바구니
+            </Link>
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               장바구니
@@ -58,13 +55,9 @@ export default async function Pm() {
           )}
 
           {session ? (
-            session.user.root == 0 ? (
-              <Link className="navbar-a" href="/pm">
-                상품관리
-              </Link>
-            ) : (
-              <div></div>
-            )
+            <Link className="navbar-a" href="/pm">
+              상품관리
+            </Link>
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               상품관리
@@ -75,7 +68,7 @@ export default async function Pm() {
         <div className="navber-login-sginup-search">
           {session ? (
             <span className="session-login">
-              <span>{session.user.name}님</span> <LogOutBtn />
+              <span>{session.user.name}님</span> <LogOutBtn />{" "}
             </span>
           ) : (
             <LoginBtn></LoginBtn>
@@ -88,16 +81,37 @@ export default async function Pm() {
         </div>
       </div>
 
-      <div className="pm-title">
-        <span>상품관리</span>
-        <Link href={"/create"} className="pm-create">
-          상품등록
-        </Link>
+      <div className="category-pm-frame">
+        <div className="category">
+          <Link href="/category/top">
+            <span>상의</span>
+          </Link>
+          <Link href="/category/pants">
+            <span>하의</span>
+          </Link>
+          <Link href="/category/shoes">
+            <span>신발</span>
+          </Link>
+          <Link href="/category/onepiece">
+            <span>원피스</span>
+          </Link>
+          <Link href="/category/outer">
+            <span>아우터</span>
+          </Link>
+          <Link href="/category/bag">
+            <span>가방</span>
+          </Link>
+          <Link href="/category/socks">
+            <span>양말</span>
+          </Link>
+          <Link href="/category/jewelry">
+            <span>패션소품</span>
+          </Link>
+        </div>
+        <div className="main-pm-frame">
+          <SearchItem result={result} />
+        </div>
       </div>
-
-      <div className="list-bg">
-        <ListItem result={result} />
-      </div>
-    </div>
+    </main>
   );
 }

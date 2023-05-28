@@ -31,9 +31,13 @@ export default async function Create() {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/basket">
-              장바구니
-            </Link>
+            session.user.root == 1 ? (
+              <Link className="navbar-a" href="/basket">
+                장바구니
+              </Link>
+            ) : (
+              <div></div>
+            )
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               장바구니
@@ -41,9 +45,13 @@ export default async function Create() {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/pm">
-              상품관리
-            </Link>
+            session.user.root == 0 ? (
+              <Link className="navbar-a" href="/pm">
+                상품관리
+              </Link>
+            ) : (
+              <div></div>
+            )
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               상품관리
@@ -54,15 +62,15 @@ export default async function Create() {
         <div className="navber-login-sginup-search">
           {session ? (
             <span className="session-login">
-              <span>{session.user.name}님</span> <LogOutBtn />{" "}
+              <span>{session.user.name}님</span> <LogOutBtn />
             </span>
           ) : (
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
 
-          <form>
-            <input className="search" placeholder="검색" type="search" />
+          <form className="search-item" action="/api/search" method="POST">
+            <input className="search" name="search" placeholder="검색" type="search" />
           </form>
         </div>
       </div>
@@ -75,11 +83,14 @@ export default async function Create() {
         <form className="create-form" action="/api/new" method="POST">
           <span>카테고리</span>
           <select name="category" className="category-select">
-            <option value="상의">상의</option>
-            <option value="하의">하의</option>
-            <option value="신발">신발</option>
-            <option value="원피스">원피스</option>
-            <option value="아우터">아우터</option>
+            <option value="top">상의</option>
+            <option value="pants">하의</option>
+            <option value="shoes">신발</option>
+            <option value="onepiece">원피스</option>
+            <option value="outer">아우터</option>
+            <option value="bag">가방</option>
+            <option value="socks">양말</option>
+            <option value="jewelry">패션소품</option>
           </select>
           <span>상품명</span>
           <input name="name" placeholder="상품명" />

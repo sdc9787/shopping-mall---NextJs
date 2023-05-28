@@ -33,7 +33,9 @@
   font-size: 30px;
   margin-bottom: 5px;
 }
-
+.pro-info-frame {
+  margin-bottom: 150px;
+}
 .pro-info-frame form button {
   margin-top: 10px;
   background-color: #dacffa;

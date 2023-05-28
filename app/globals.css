@@ -55,6 +55,9 @@ html {
 }
 
 .category span {
+  display: block;
+  width: 120px;
+  margin-bottom: 10px;
   border-radius: 10px;
   text-align: center;
   width: 64.16px;
@@ -64,4 +67,10 @@ html {
 .category span:hover {
   background-color: #c7bde2;
   cursor: pointer;
+}
+
+.no-result-message {
+  text-align: center;
+  margin: 50px auto;
+  font-size: 24px;
 }

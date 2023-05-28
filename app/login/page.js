@@ -32,6 +32,7 @@ export default function Login() {
         <form onSubmit={login}>
           <input name="email" placeholder="Email" type="email" />
           <input name="password" placeholder="Password" type="password" />
+
           <button type="submit">로그인</button>
         </form>
         <Link className="signup-link" href="/signup">

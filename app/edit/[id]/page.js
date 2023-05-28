@@ -35,9 +35,13 @@ export default async function Edit(props) {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/basket">
-              장바구니
-            </Link>
+            session.user.root == 1 ? (
+              <Link className="navbar-a" href="/basket">
+                장바구니
+              </Link>
+            ) : (
+              <div></div>
+            )
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               장바구니
@@ -45,9 +49,13 @@ export default async function Edit(props) {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/pm">
-              상품관리
-            </Link>
+            session.user.root == 0 ? (
+              <Link className="navbar-a" href="/pm">
+                상품관리
+              </Link>
+            ) : (
+              <div></div>
+            )
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               상품관리
@@ -58,15 +66,15 @@ export default async function Edit(props) {
         <div className="navber-login-sginup-search">
           {session ? (
             <span className="session-login">
-              <span>{session.user.name}님</span> <LogOutBtn />{" "}
+              <span>{session.user.name}님</span> <LogOutBtn />
             </span>
           ) : (
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
 
-          <form>
-            <input className="search" placeholder="검색" type="search" />
+          <form className="search-item" action="/api/search" method="POST">
+            <input className="search" name="search" placeholder="검색" type="search" />
           </form>
         </div>
       </div>

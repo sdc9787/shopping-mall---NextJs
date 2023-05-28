@@ -41,9 +41,13 @@ export default async function Home() {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/basket">
-              장바구니
-            </Link>
+            session.user.root == 1 ? (
+              <Link className="navbar-a" href="/basket">
+                장바구니
+              </Link>
+            ) : (
+              <div></div>
+            )
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               장바구니
@@ -51,9 +55,13 @@ export default async function Home() {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/pm">
-              상품관리
-            </Link>
+            session.user.root == 0 ? (
+              <Link className="navbar-a" href="/pm">
+                상품관리
+              </Link>
+            ) : (
+              <div></div>
+            )
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               상품관리
@@ -64,26 +72,45 @@ export default async function Home() {
         <div className="navber-login-sginup-search">
           {session ? (
             <span className="session-login">
-              <span>{session.user.name}님</span> <LogOutBtn />{" "}
+              <span>{session.user.name}님</span> <LogOutBtn />
             </span>
           ) : (
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
 
-          <form>
-            <input className="search" placeholder="검색" type="search" />
+          <form className="search-item" action="/api/search" method="POST">
+            <input className="search" name="search" placeholder="검색" type="search" />
           </form>
         </div>
       </div>
 
       <div className="category-pm-frame">
         <div className="category">
-          <span>상의</span>
-          <span>하의</span>
-          <span>신발</span>
-          <span>신발</span>
-          <span>아우터</span>
+          <Link href="/category/top">
+            <span>상의</span>
+          </Link>
+          <Link href="/category/pants">
+            <span>하의</span>
+          </Link>
+          <Link href="/category/shoes">
+            <span>신발</span>
+          </Link>
+          <Link href="/category/onepiece">
+            <span>원피스</span>
+          </Link>
+          <Link href="/category/outer">
+            <span>아우터</span>
+          </Link>
+          <Link href="/category/bag">
+            <span>가방</span>
+          </Link>
+          <Link href="/category/socks">
+            <span>양말</span>
+          </Link>
+          <Link href="/category/jewelry">
+            <span>패션소품</span>
+          </Link>
         </div>
         <div className="main-pm-frame">
           <PmList result={result} />

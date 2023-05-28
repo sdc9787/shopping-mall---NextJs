@@ -18,9 +18,18 @@ export default function Login() {
           <span>email</span>
           <input name="email" placeholder="email" type="text" />
           <span>Password</span>
-          <input name="password" placeholder="PASSWORD" type="password" />
+          <input name="password" placeholder="password" type="password" />
           <span>Check Password</span>
-          <input name="checkpassword" placeholder="CHECK PASSWORD" type="password" />
+          <input name="checkpassword" placeholder="check password" type="password" />
+          <label>
+            <input type="radio" name="root" value="1" checked />
+            <span>소비자</span>
+          </label>
+
+          <label>
+            <input type="radio" name="root" value="0" />
+            <span>판매자</span>
+          </label>
           <button>회원가입</button>
         </form>
         <Link className="login-link" href="/login">
