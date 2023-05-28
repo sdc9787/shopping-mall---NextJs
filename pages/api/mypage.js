@@ -12,6 +12,6 @@ export default async function handler(a, b) {
     let hash = await bcrypt.hash(a.body.newpassword, 10);
     a.body.newpassword = hash;
     let result1 = await db.collection("consumer").updateOne({ email: a.body.id }, { $set: { password: a.body.newpassword } });
-    b.redirect(302, "/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F");
+    b.redirect(302, "/login");
   }
 }

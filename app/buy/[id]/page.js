@@ -90,14 +90,9 @@ export default async function Edit(props) {
             <span>가격 : {result.price}</span>
             <span>수량 : {result.count}</span>
           </div>
-          <div className="buy-flex">
-            <form action="/api/buy" method="POST">
-              <button>상품 구매</button>
-            </form>
-            <form action="/api/basket" method="POST">
-              <button>장바구니</button>
-            </form>
-          </div>
+          <form action="/api/buy" method="POST">
+            <button>상품 구매</button>
+          </form>
         </div>
       </div>
     </div>
