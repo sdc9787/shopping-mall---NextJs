@@ -65,9 +65,15 @@ export default async function Edit(props) {
 
         <div className="navber-login-sginup-search">
           {session ? (
-            <span className="session-login">
-              <span>{session.user.name}님</span> <LogOutBtn />
-            </span>
+            session.user.root == 1 ? (
+              <span className="session-login">
+                <span>{session.user.name}님[소비자]</span> <LogOutBtn />
+              </span>
+            ) : (
+              <span className="session-login">
+                <span>{session.user.name}님[판매자]</span> <LogOutBtn />
+              </span>
+            )
           ) : (
             <LoginBtn></LoginBtn>
           )}
@@ -98,9 +104,9 @@ export default async function Edit(props) {
           <span>상품명</span>
           <input name="name" placeholder="상품명" defaultValue={result.name} />
           <span>가격</span>
-          <input name="price" placeholder="가격" defaultValue={result.price} />
+          <input name="price" placeholder="가격(원)" defaultValue={result.price} type="number" min="0" />
           <span>수량</span>
-          <input name="count" placeholder="수량" defaultValue={result.count} />
+          <input name="count" placeholder="수량(개)" defaultValue={result.count} type="number" min="0" />
           <input style={{ display: "none" }} name="_id" defaultValue={result._id.toString()} />
           <input style={{ display: "none" }} name="email" defaultValue={result.email} />
           <input style={{ display: "none" }} name="nickname" defaultValue={result.nickname} />

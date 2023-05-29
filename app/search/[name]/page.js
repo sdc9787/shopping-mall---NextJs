@@ -13,7 +13,16 @@ export const dynamic = "force-dynamic";
 export default async function Search(props) {
   let session = await getServerSession(authOptions);
   const db = (await connectDB).db("product"); //데이터 베이스 접근
-  let result = await db.collection("info").find({ name: props.params.name }).toArray();
+  const keyword = decodeURIComponent(props.params.name);
+  let result = await db
+    .collection("info")
+    .find({
+      $or: [
+        { name: { $regex: keyword, $options: "i" } }, // 영어 검색
+        { name: { $regex: ".*" + keyword + ".*", $options: "i" } }, // 한글 검색
+      ],
+    })
+    .toArray();
   console.log(result);
   result = result.map((a) => {
     a.name = a.name.toString();
@@ -67,9 +76,15 @@ export default async function Search(props) {
 
         <div className="navber-login-sginup-search">
           {session ? (
-            <span className="session-login">
-              <span>{session.user.name}님</span> <LogOutBtn />{" "}
-            </span>
+            session.user.root == 1 ? (
+              <span className="session-login">
+                <span>{session.user.name}님[소비자]</span> <LogOutBtn />
+              </span>
+            ) : (
+              <span className="session-login">
+                <span>{session.user.name}님[판매자]</span> <LogOutBtn />
+              </span>
+            )
           ) : (
             <LoginBtn></LoginBtn>
           )}

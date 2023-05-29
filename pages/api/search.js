@@ -1,3 +1,4 @@
 export default async function handler(a, b) {
-  b.redirect(302, "/search/" + a.body.search);
+  const searchQuery = encodeURIComponent(a.body.search);
+  b.redirect(302, "/search/" + searchQuery);
 }

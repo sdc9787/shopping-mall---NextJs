@@ -67,9 +67,15 @@ export default async function Search(props) {
 
         <div className="navber-login-sginup-search">
           {session ? (
-            <span className="session-login">
-              <span>{session.user.name}님</span> <LogOutBtn />{" "}
-            </span>
+            session.user.root == 1 ? (
+              <span className="session-login">
+                <span>{session.user.name}님[소비자]</span> <LogOutBtn />
+              </span>
+            ) : (
+              <span className="session-login">
+                <span>{session.user.name}님[판매자]</span> <LogOutBtn />
+              </span>
+            )
           ) : (
             <LoginBtn></LoginBtn>
           )}
