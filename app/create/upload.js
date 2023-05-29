@@ -2,45 +2,39 @@
 
 import { useState } from "react";
 
-export default function FileUpload() {
-  const [selectedFile, setSelectedFile] = useState(null);
+export default function PrivatePage(props) {
+  const [image, setImage] = useState(null);
+  const [createObjectURL, setCreateObjectURL] = useState(null);
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+  const uploadToClient = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const i = event.target.files[0];
+
+      setImage(i);
+      setCreateObjectURL(URL.createObjectURL(i));
+    }
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!selectedFile) {
-      // 파일이 선택되지 않았을 경우에 대한 처리
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("yourFieldName", selectedFile);
-
-    try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data); // 응답 데이터를 처리합니다.
-      } else {
-        console.error("파일 업로드 실패");
-      }
-    } catch (error) {
-      console.error("파일 업로드 요청 실패:", error);
-    }
+  const uploadToServer = async (event) => {
+    const body = new FormData();
+    // console.log("file", image)
+    body.append("file", image);
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body,
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="file" onChange={handleFileChange} />
-      <button type="submit">업로드</button>
-    </form>
+    <div>
+      <div>
+        <img src={createObjectURL} />
+        <h4>Select Image</h4>
+        <input type="file" name="myImage" onChange={uploadToClient} />
+        <button className="btn btn-primary" type="submit" onClick={uploadToServer}>
+          Send to server
+        </button>
+      </div>
+    </div>
   );
 }
