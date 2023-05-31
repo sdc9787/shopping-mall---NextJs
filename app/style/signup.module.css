@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 100px 60px;
+  padding: 80px 80px;
   border: 8px solid #c7bde2;
   border-radius: 10px;
   background-color: #fcfcfe;
@@ -81,6 +81,7 @@
   width: 100%;
   text-align: left;
   margin-bottom: 5px;
+  font-weight: 700;
 }
 
 .signup-main form button {
@@ -108,4 +109,20 @@
 
 .login-link:hover {
   text-decoration: underline;
+}
+
+.signup-main form div label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-main form div label span {
+  margin: 0px 5px;
+}
+
+.signup-main form div {
+  display: flex;
+  flex-direction: row;
 }

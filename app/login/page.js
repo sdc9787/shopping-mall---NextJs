@@ -17,7 +17,6 @@ export default function Login() {
       redirect: true,
       callbackUrl: "http://localhost:3000/",
     });
-    console.log(response);
   };
   return (
     <div className="login-frame">
@@ -30,8 +29,8 @@ export default function Login() {
         <span className="Login-title">THESINSA</span>
         <span className="login">Login</span>
         <form onSubmit={login}>
-          <input name="email" placeholder="Email" type="email" />
-          <input name="password" placeholder="Password" type="password" />
+          <input name="email" placeholder="이메일" type="email" />
+          <input name="password" placeholder="비밀번호" type="password" />
 
           <button type="submit">로그인</button>
         </form>

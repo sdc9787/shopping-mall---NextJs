@@ -1,5 +1,6 @@
 import { connectDB } from "@/util/database";
 import bcrypt from "bcrypt";
+import { signOut } from "next-auth/react";
 
 export default async function handler(a, b) {
   var db = (await connectDB).db("check_user");

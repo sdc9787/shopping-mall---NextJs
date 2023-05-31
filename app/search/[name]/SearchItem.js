@@ -11,7 +11,7 @@ export default function SearchList({ result }) {
       {result.map((a, i) => (
         <Link href={"/buy/" + result[i]._id.toString()}>
           <div className="pm-list" key={i}>
-            <img src={"/uploads/" + result.myImage} />
+            <img src={"/uploads/" + result[i].myImage} />
             <h4>{result[i].name}</h4>
             <span>{result[i].price}</span>
           </div>

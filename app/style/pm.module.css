@@ -8,6 +8,9 @@
   padding: 10px;
 }
 .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: white;
   border-radius: 10px;
   padding: 20px;
@@ -56,4 +59,24 @@ a {
   font-weight: 700;
   background-color: white;
   border: 1px solid gray;
+}
+
+.pm-img {
+  width: 50px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.pm-name-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pm-count {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
 }
