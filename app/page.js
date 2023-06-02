@@ -5,10 +5,12 @@ import LoginBtn from "./LoginBtn";
 import { authOptions } from "@/pages/api/auth/[...nextauth].js";
 import { getServerSession } from "next-auth";
 import { LogOutBtn } from "./LogOutBtn";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default async function Home() {
   const db = (await connectDB).db("product"); //데이터 베이스 접근
-  let result = await db.collection("info").find().toArray();
+  let result = await db.collection("info").find().toArray(); //
   result = result.map((a) => {
     a._id = a._id.toString();
     return a;
@@ -68,7 +70,14 @@ export default async function Home() {
             </Link>
           )}
         </div>
-
+        <form className="search-item" action="/api/search" method="POST">
+          <div className="search-icon">
+            <input className="search" name="search" placeholder="검색" type="search" />
+            <button>
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+            </button>
+          </div>
+        </form>
         <div className="navber-login-sginup-search">
           {session ? (
             session.user.root == 1 ? (
@@ -84,10 +93,6 @@ export default async function Home() {
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
-
-          <form className="search-item" action="/api/search" method="POST">
-            <input className="search" name="search" placeholder="검색" type="search" />
-          </form>
         </div>
       </div>
 
@@ -115,7 +120,7 @@ export default async function Home() {
             <span>양말</span>
           </Link>
           <Link href="/category/jewelry">
-            <span>패션소품</span>
+            <span style={{ marginBottom: "0px" }}>패션소품</span>
           </Link>
         </div>
         <div className="main-pm-frame">

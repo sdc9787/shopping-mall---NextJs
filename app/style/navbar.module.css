@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   background-color: #dacffa;
   margin: 10px;
   border-radius: 10px;
@@ -10,8 +11,9 @@
 
 .navbar-table {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  width: 33%;
 }
 
 .navbar-a {
@@ -36,7 +38,7 @@
   font-weight: 900;
   font-size: 25px;
   margin: 10px;
-  margin-right: 50px;
+  margin-right: 30px;
 }
 
 .navber-login-sginup-search {
@@ -84,14 +86,29 @@
   cursor: pointer;
 }
 
+.navber-login-sginup-search {
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .navber-login-sginup-search a:hover {
   font-weight: 700;
   background-color: #c7bde2;
 }
 
+.search-item {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+
 .search {
+  width: 400px;
+  padding: 10px 15px;
   margin: 0px 10px;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .session-login {
@@ -104,4 +121,21 @@
   height: 15px;
   font-family: "Noto Sans KR";
   font-weight: 500;
+}
+
+.search-icon button {
+  border-radius: 33%;
+  top: 8px;
+  right: 20px;
+  position: absolute;
+  border: 0px solid #ffffff;
+  background-color: #ffffff;
+}
+
+.search-icon button:hover {
+  cursor: pointer;
+}
+
+.search-icon {
+  position: relative;
 }

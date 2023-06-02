@@ -5,6 +5,7 @@
 @import url("./style//pm.module.css");
 @import url("./style//create.module.css");
 @import url("./style//buy.module.css");
+@import url("./style//basket.module.css");
 
 html {
   font-family: "Roboto", "Noto Sans KR";
@@ -37,6 +38,18 @@ html {
   width: 250px;
 }
 
+.pm-list h4 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.pm-list span {
+  font-size: 20px;
+  font-family: 900;
+}
+
 .category-pm-frame {
   margin-top: 80px;
 }
@@ -62,9 +75,11 @@ html {
   text-align: center;
   width: 64.16px;
   padding: 15px 5px;
+  transition: 0.15s all ease-in-out;
 }
 
 .category span:hover {
+  font-weight: 900;
   background-color: #c7bde2;
   cursor: pointer;
 }

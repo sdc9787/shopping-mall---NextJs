@@ -1,0 +1,13 @@
+.basket-form {
+  width: 100%;
+  text-align: center;
+}
+
+.basket-count {
+  flex-direction: row;
+  align-items: center;
+}
+
+.basket-count span {
+  margin-right: 20px;
+}

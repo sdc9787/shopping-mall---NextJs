@@ -1,21 +1,21 @@
 import Link from "next/link";
-import ListItem from "./ListItem";
+
 import { connectDB } from "@/util/database";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { LogOutBtn } from "../LogOutBtn";
 import LoginBtn from "../LoginBtn";
-import { redirect } from "next/dist/server/api-utils";
+import BasketItem from "./basketItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export const dynamic = "force-dynamic";
 
-export default async function Pm() {
+export default async function Basket() {
   let session = await getServerSession(authOptions);
-  const db = (await connectDB).db("product"); //데이터 베이스 접근
-  let result = await db.collection("info").find({ email: session.user.email }).toArray();
-  console.log(result);
+  const db = (await connectDB).db("basket"); //데이터 베이스 접근
+  let result = await db.collection("mybasket").find({ session_email: session.user.email }).toArray();
+
   result = result.map((a) => {
     a._id = a._id.toString();
     return a;
@@ -100,16 +100,19 @@ export default async function Pm() {
       </div>
 
       <div className="pm-title">
-        <span>상품관리</span>
-        <Link href={"/create"} className="pm-create">
-          상품등록
-        </Link>
+        <span>장바구니</span>
       </div>
 
       <div className="basket">
         <div className="list-bg">
-          <ListItem result={result} />
+          <BasketItem result={result} />
         </div>
+        <form className="basket-form create-form" action="/api/basket" method="POST">
+          <input style={{ display: "none" }} name="session_email" defaultValue={session.user.email} />
+          <button style={{ margin: "0px" }} type="submit">
+            상품구매
+          </button>
+        </form>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { LogOutBtn } from "../LogOutBtn";
 import LoginBtn from "../LoginBtn";
 import { connectDB } from "@/util/database";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default async function Create() {
   let session = await getServerSession(authOptions);
@@ -59,7 +61,14 @@ export default async function Create() {
             </Link>
           )}
         </div>
-
+        <form className="search-item" action="/api/search" method="POST">
+          <div className="search-icon">
+            <input className="search" name="search" placeholder="검색" type="search" />
+            <button>
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+            </button>
+          </div>
+        </form>
         <div className="navber-login-sginup-search">
           {session ? (
             session.user.root == 1 ? (
@@ -75,24 +84,23 @@ export default async function Create() {
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
-
-          <form className="search-item" action="/api/search" method="POST">
-            <input className="search" name="search" placeholder="검색" type="search" />
-          </form>
         </div>
       </div>
 
       <h4 className="create-title">메인페이지</h4>
       <div className="create-frame">
         <form className="create-form" action="/api/mypage" method="POST">
-          <span style={{ fontWeight: "700" }}>현재 비밀번호</span>
-          <input name="password" type="password" />
-          <span style={{ fontWeight: "700" }}>변경할 비밀번호</span>
-          <input name="newpassword" type="password" />
-          <input style={{ display: "none" }} name="session" type="text" value={session.user.password} />
-          <input style={{ display: "none" }} name="id" type="text" value={session.user.email} />
-
-          <button type="submit">비밀번호 변경</button>
+          <div className="product-info">
+            <span style={{ fontWeight: "700" }}>현재 비밀번호</span>
+            <input name="password" type="password" />
+            <span style={{ fontWeight: "700" }}>변경할 비밀번호</span>
+            <input name="newpassword" type="password" />
+            <input style={{ display: "none" }} name="session" type="text" value={session.user.password} />
+            <input style={{ display: "none" }} name="id" type="text" value={session.user.email} />
+            <button style={{ fontSize: "13px", fontWeight: "900" }} type="submit">
+              비밀번호 변경
+            </button>
+          </div>
         </form>
       </div>
     </div>

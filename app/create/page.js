@@ -4,6 +4,8 @@ import Link from "next/link";
 import { LogOutBtn } from "../LogOutBtn";
 import LoginBtn from "../LoginBtn";
 import PrivatePage from "./upload";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default async function Create() {
   let session = await getServerSession(authOptions);
@@ -59,7 +61,14 @@ export default async function Create() {
             </Link>
           )}
         </div>
-
+        <form className="search-item" action="/api/search" method="POST">
+          <div className="search-icon">
+            <input className="search" name="search" placeholder="검색" type="search" />
+            <button>
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+            </button>
+          </div>
+        </form>
         <div className="navber-login-sginup-search">
           {session ? (
             session.user.root == 1 ? (
@@ -75,10 +84,6 @@ export default async function Create() {
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
-
-          <form className="search-item" action="/api/search" method="POST">
-            <input className="search" name="search" placeholder="검색" type="search" />
-          </form>
         </div>
       </div>
 

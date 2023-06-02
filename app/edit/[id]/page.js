@@ -2,6 +2,8 @@ import { LogOutBtn } from "@/app/LogOutBtn";
 import LoginBtn from "@/app/LoginBtn";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
@@ -62,7 +64,14 @@ export default async function Edit(props) {
             </Link>
           )}
         </div>
-
+        <form className="search-item" action="/api/search" method="POST">
+          <div className="search-icon">
+            <input className="search" name="search" placeholder="검색" type="search" />
+            <button>
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+            </button>
+          </div>
+        </form>
         <div className="navber-login-sginup-search">
           {session ? (
             session.user.root == 1 ? (
@@ -78,10 +87,6 @@ export default async function Edit(props) {
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
-
-          <form className="search-item" action="/api/search" method="POST">
-            <input className="search" name="search" placeholder="검색" type="search" />
-          </form>
         </div>
       </div>
 
@@ -99,19 +104,29 @@ export default async function Edit(props) {
           <img src={"/uploads/" + result.myImage} />
         </div>
         <form className="create-form" action="/api/edit" method="POST">
-          <span>카테고리</span>
-          <input name="category" placeholder="카테고리" defaultValue={result.category} />
-          <span>상품명</span>
-          <input name="name" placeholder="상품명" defaultValue={result.name} />
-          <span>가격</span>
-          <input name="price" placeholder="가격(원)" defaultValue={result.price} type="number" min="0" />
-          <span>수량</span>
-          <input name="count" placeholder="수량(개)" defaultValue={result.count} type="number" min="0" />
-          <input style={{ display: "none" }} name="_id" defaultValue={result._id.toString()} />
-          <input style={{ display: "none" }} name="email" defaultValue={result.email} />
-          <input style={{ display: "none" }} name="nickname" defaultValue={result.nickname} />
-
-          <button type="submit">상품수정</button>
+          <div className="product-info">
+            <span>카테고리</span>
+            <select name="category" className="category-select">
+              <option value="top">상의</option>
+              <option value="pants">하의</option>
+              <option value="shoes">신발</option>
+              <option value="onepiece">원피스</option>
+              <option value="outer">아우터</option>
+              <option value="bag">가방</option>
+              <option value="socks">양말</option>
+              <option value="jewelry">패션소품</option>
+            </select>
+            <span>상품명</span>
+            <input name="name" placeholder="상품명" defaultValue={result.name} pattern="\S(.*\S)?" required />
+            <span>가격</span>
+            <input name="price" placeholder="가격(원)" defaultValue={result.price} type="number" min="0" pattern="\S(.*\S)?" required />
+            <span>수량</span>
+            <input name="count" placeholder="수량(개)" defaultValue={result.count} type="number" min="0" pattern="\S(.*\S)?" required />
+            <input style={{ display: "none" }} name="_id" defaultValue={result._id.toString()} />
+            <input style={{ display: "none" }} name="email" defaultValue={result.email} />
+            <input style={{ display: "none" }} name="nickname" defaultValue={result.nickname} />
+            <button type="submit">상품수정</button>
+          </div>
         </form>
       </div>
     </div>

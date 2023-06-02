@@ -2,12 +2,28 @@
   font-weight: 700;
   background-color: #c7bde2;
 }
+.list-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-frame a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
 
 .list-bg {
-  background: rgb(249, 250, 255);
+  background: #fcfcfe;
   padding: 10px;
 }
 .list-item {
+  width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,7 +81,7 @@ a {
   width: 50px;
   border: 1px solid gray;
   border-radius: 10px;
-  margin-right: 10px;
+  margin-right: 40px;
 }
 
 .pm-name-count {

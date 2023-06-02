@@ -14,11 +14,11 @@ export default function SignUp() {
         <span className="signup">Sign Up</span>
         <form method="POST" action="/api/auth/signup">
           <span>이름</span>
-          <input name="name" placeholder="이름" type="text" />
+          <input name="name" placeholder="이름" type="text" pattern="\S(.*\S)?" required />
           <span>이메일</span>
-          <input name="email" placeholder="이메일" type="text" />
+          <input name="email" placeholder="이메일" type="email" />
           <span>비밀번호</span>
-          <input name="password" placeholder="비밀번호" type="password" />
+          <input name="password" placeholder="비밀번호" type="password" pattern="\S(.*\S)?" required />
           <span>비밀번호 확인</span>
           <input name="checkpassword" placeholder="비밀번호 확인" type="password" />
           <div>

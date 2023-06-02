@@ -13,7 +13,7 @@ export default function SearchList({ result }) {
           <div className="pm-list" key={i}>
             <img src={"/uploads/" + result[i].myImage} />
             <h4>{result[i].name}</h4>
-            <span>{result[i].price}</span>
+            <span>{result[i].price} 원</span>
           </div>
         </Link>
       ))}

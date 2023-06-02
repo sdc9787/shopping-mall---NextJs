@@ -2,14 +2,44 @@ import { LogOutBtn } from "@/app/LogOutBtn";
 import LoginBtn from "@/app/LoginBtn";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
 export default async function Edit(props) {
   const db = (await connectDB).db("product"); //데이터 베이스 접근
-  let result = await db.collection("info").findOne({ _id: new ObjectId(props.params.id) });
+  let result = await db.collection("info").findOne({ _id: new ObjectId(props.params.id) }); //
   let session = await getServerSession(authOptions);
+  let category = result.category;
+  switch (category) {
+    case "top":
+      category = "상의";
+      break;
+    case "pants":
+      category = "하의";
+      break;
+    case "shoes":
+      category = "신발";
+      break;
+    case "onepiece":
+      category = "원피스";
+      break;
+    case "outer":
+      category = "아우터";
+      break;
+    case "bag":
+      category = "가방";
+      break;
+    case "socks":
+      category = "양말";
+      break;
+    case "jewelry":
+      category = "패션소품";
+      break;
+  }
+
   return (
     <div>
       <div className="navbar">
@@ -62,7 +92,14 @@ export default async function Edit(props) {
             </Link>
           )}
         </div>
-
+        <form className="search-item" action="/api/search" method="POST">
+          <div className="search-icon">
+            <input className="search" name="search" placeholder="검색" type="search" />
+            <button>
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+            </button>
+          </div>
+        </form>
         <div className="navber-login-sginup-search">
           {session ? (
             session.user.root == 1 ? (
@@ -78,10 +115,6 @@ export default async function Edit(props) {
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
-
-          <form className="search-item" action="/api/search" method="POST">
-            <input className="search" name="search" placeholder="검색" type="search" />
-          </form>
         </div>
       </div>
 
@@ -99,15 +132,39 @@ export default async function Edit(props) {
             <span>판매자 : {result.nickname}</span>
             <span>이메일 : {result.email}</span>
             <span>상품 정보</span>
-            <span>카테고리 : {result.category}</span>
+            <span>카테고리 : {category}</span>
             <span>상품명 : {result.name}</span>
             <span>가격 : {result.price}</span>
-            <span>수량 : {result.count}</span>
+            <span>남은 수량 : {result.count}</span>
           </div>
           {session ? (
             session.user.root == 1 ? (
-              <form action="/api/basket" method="POST">
-                <button>장바구니</button>
+              <form action="/api/buy" method="POST">
+                <input style={{ display: "none" }} name="session_email" defaultValue={session.user.email} />
+                <input style={{ display: "none" }} name="session_id" defaultValue={result._id.toString()} />
+                <input style={{ display: "none" }} name="name" placeholder="상품명" defaultValue={result.name} />
+                <input style={{ display: "none" }} name="price" placeholder="가격(원)" defaultValue={result.price} type="number" />
+                <input style={{ display: "none" }} name="myImage" defaultValue={result.myImage} />
+                <input style={{ display: "none" }} name="category" placeholder="카테고리" defaultValue={result.category} />
+                <input style={{ display: "none" }} name="count" placeholder="수량(개)" defaultValue={result.count} type="number" min="0" />
+                <input style={{ display: "none" }} name="email" defaultValue={result.email} />
+                <input style={{ display: "none" }} name="nickname" defaultValue={result.nickname} />
+                <span>수량선택</span>
+                <input
+                  style={{ padding: "5px", width: "40px", marginLeft: "10px", borderRadius: "5px" }}
+                  name="selcter_count"
+                  type="number"
+                  defaultValue={1}
+                  min={1}
+                  max={parseInt(result.count)}
+                ></input>
+                {result.count == "0" ? (
+                  <button disabled style={{ width: "120px" }}>
+                    품절
+                  </button>
+                ) : (
+                  <button>장바구니</button>
+                )}
               </form>
             ) : (
               <div></div>

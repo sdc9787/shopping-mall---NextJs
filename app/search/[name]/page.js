@@ -7,6 +7,8 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/dist/server/api-utils";
 import { LogOutBtn } from "@/app/LogOutBtn";
 import LoginBtn from "@/app/LoginBtn";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export const dynamic = "force-dynamic";
 
@@ -54,9 +56,13 @@ export default async function Search(props) {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/basket">
-              장바구니
-            </Link>
+            session.user.root == 1 ? (
+              <Link className="navbar-a" href="/basket">
+                장바구니
+              </Link>
+            ) : (
+              <div></div>
+            )
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               장바구니
@@ -64,16 +70,27 @@ export default async function Search(props) {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/pm">
-              상품관리
-            </Link>
+            session.user.root == 0 ? (
+              <Link className="navbar-a" href="/pm">
+                상품관리
+              </Link>
+            ) : (
+              <div></div>
+            )
           ) : (
             <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
               상품관리
             </Link>
           )}
         </div>
-
+        <form className="search-item" action="/api/search" method="POST">
+          <div className="search-icon">
+            <input className="search" name="search" placeholder="검색" type="search" />
+            <button>
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="xl" />
+            </button>
+          </div>
+        </form>
         <div className="navber-login-sginup-search">
           {session ? (
             session.user.root == 1 ? (
@@ -89,10 +106,6 @@ export default async function Search(props) {
             <LoginBtn></LoginBtn>
           )}
           {session ? <span></span> : <Link href={"/signup"}>회원가입</Link>}
-
-          <form className="search-item" action="/api/search" method="POST">
-            <input className="search" name="search" placeholder="검색" type="search" />
-          </form>
         </div>
       </div>
 
@@ -120,9 +133,10 @@ export default async function Search(props) {
             <span>양말</span>
           </Link>
           <Link href="/category/jewelry">
-            <span>패션소품</span>
+            <span style={{ marginBottom: "0px" }}>패션소품</span>
           </Link>
         </div>
+        <span style={{ marginLeft: "120px", fontSize: "25px", fontWeight: "700" }}>검색결과 : {props.params.name}</span>
         <div className="main-pm-frame">
           <SearchItem result={result} />
         </div>
