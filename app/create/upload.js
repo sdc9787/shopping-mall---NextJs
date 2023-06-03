@@ -28,7 +28,7 @@ export default function PrivatePage({ session }) {
   return (
     <div>
       <div>
-        <form className="create-form" action="/api/new" method="POST">
+        <form className="create-form" action="/api/create" method="POST">
           <div className="img-upload">
             <img src={createObjectURL} />
             <input type="file" name="myImage" onChange={uploadToClient} />

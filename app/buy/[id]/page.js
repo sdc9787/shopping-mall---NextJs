@@ -170,8 +170,10 @@ export default async function Edit(props) {
               <div></div>
             )
           ) : (
-            <Link className="navbar-a" href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
-              장바구니
+            <Link href="/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F">
+              <form>
+                <button>장바구니</button>
+              </form>
             </Link>
           )}
         </div>
