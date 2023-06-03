@@ -7,7 +7,7 @@ import { connectDB } from "@/util/database";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-export default async function Create() {
+export default async function Mypage() {
   let session = await getServerSession(authOptions);
   return (
     <div>

@@ -15,7 +15,6 @@ export default async function Pm() {
   let session = await getServerSession(authOptions);
   const db = (await connectDB).db("product"); //데이터 베이스 접근
   let result = await db.collection("info").find({ email: session.user.email }).toArray();
-  console.log(result);
   result = result.map((a) => {
     a._id = a._id.toString();
     return a;

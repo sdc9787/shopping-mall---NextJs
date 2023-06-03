@@ -12,7 +12,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export const dynamic = "force-dynamic";
 
-export default async function Search(props) {
+export default async function Category(props) {
   let session = await getServerSession(authOptions);
   const db = (await connectDB).db("product"); //데이터 베이스 접근
   let result = await db.collection("info").find({ category: props.params.category }).toArray();

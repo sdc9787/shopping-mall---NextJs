@@ -8,7 +8,7 @@ import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-export default async function Edit(props) {
+export default async function Buy(props) {
   const db = (await connectDB).db("product"); //데이터 베이스 접근
   let result = await db.collection("info").findOne({ _id: new ObjectId(props.params.id) }); //
   let session = await getServerSession(authOptions);

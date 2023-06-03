@@ -7,13 +7,7 @@ import bcrypt from "bcrypt";
 export const authOptions = {
   providers: [
     CredentialsProvider({
-      //1. 로그인페이지 폼 자동생성해주는 코드
       id: "email-password-credential",
-      name: "credentials",
-      credentials: {
-        email: { label: "email", type: "text" },
-        password: { label: "password", type: "password" },
-      },
 
       //2. 로그인요청시 실행되는코드
       //직접 DB에서 아이디,비번 비교하고
@@ -38,7 +32,7 @@ export const authOptions = {
   //3. jwt 써놔야 잘됩니다 + jwt 만료일설정
   session: {
     strategy: "jwt",
-    maxAge: 24 * 60 * 60, //30일
+    maxAge: 24 * 60 * 60, //1일
   },
 
   callbacks: {
