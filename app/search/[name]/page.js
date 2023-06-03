@@ -19,13 +19,9 @@ export default async function Search(props) {
   let result = await db
     .collection("info")
     .find({
-      $or: [
-        { name: { $regex: keyword, $options: "i" } }, // 영어 검색
-        { name: { $regex: ".*" + keyword + ".*", $options: "i" } }, // 한글 검색
-      ],
+        name: { $regex: keyword, $options: "i" } ,
     })
     .toArray();
-  console.log(result);
   result = result.map((a) => {
     a.name = a.name.toString();
     return a;
@@ -136,7 +132,7 @@ export default async function Search(props) {
             <span style={{ marginBottom: "0px" }}>패션소품</span>
           </Link>
         </div>
-        <span style={{ marginLeft: "120px", fontSize: "25px", fontWeight: "700" }}>검색결과 : {props.params.name}</span>
+        <span style={{ marginLeft: "120px", fontSize: "25px", fontWeight: "700" }}>검색결과 : {keyword}</span>
         <div className="main-pm-frame">
           <SearchItem result={result} />
         </div>
