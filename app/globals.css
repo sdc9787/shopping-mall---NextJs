@@ -61,6 +61,7 @@ html {
 }
 
 .category {
+  z-index: 100;
   background: #dacffa;
   top: 100px;
   left: 10px;

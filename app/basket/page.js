@@ -99,11 +99,11 @@ export default async function Basket() {
         </div>
       </div>
 
-      <div className="pm-title">
+      <div className="pm-title animate__animated animate__fadeIn">
         <span>장바구니</span>
       </div>
 
-      <div className="basket">
+      <div className="basket animate__animated animate__fadeIn">
         <div className="list-bg">
           <BasketItem result={result} />
         </div>

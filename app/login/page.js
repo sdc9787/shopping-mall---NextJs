@@ -20,7 +20,7 @@ export default function Login() {
   };
   return (
     <div className="login-frame">
-      <div className="login-main">
+      <div className="login-main animate__animated animate__fadeIn">
         <Link href="/">
           <div className="go-index">
             <FontAwesomeIcon icon={faArrowLeft} />

@@ -145,8 +145,10 @@ export default async function Category(props) {
             )}
           </Link>
         </div>
-        <span style={{ marginLeft: "120px", fontSize: "25px", fontWeight: "700" }}>카테고리 : {category}</span>
-        <div className="main-pm-frame">
+        <span className="animate__animated animate__fadeIn" style={{ marginLeft: "120px", fontSize: "25px", fontWeight: "700" }}>
+          카테고리 : {category}
+        </span>
+        <div className="main-pm-frame animate__animated animate__fadeIn">
           <CategoryItem result={result} />
         </div>
       </div>

@@ -118,10 +118,10 @@ export default async function Buy(props) {
         </div>
       </div>
 
-      <div className="pm-title">
+      <div className="pm-title animate__animated animate__fadeIn">
         <span>상품 구매</span>
       </div>
-      <div className="create-frame">
+      <div className="create-frame animate__animated animate__fadeIn">
         <div className="create-img">
           <img src={"/uploads/" + result.myImage} />
         </div>

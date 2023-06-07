@@ -99,7 +99,7 @@ export default async function Edit(props) {
           </button>
         </form>
       </div>
-      <div className="create-frame">
+      <div className="create-frame animate__animated animate__fadeIn">
         <div className="create-img">
           <img src={"/uploads/" + result.myImage} />
         </div>

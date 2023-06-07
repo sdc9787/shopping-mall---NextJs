@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="navbar">
+      <div className="navbar animate__animated animate__slideInDown">
         <div className="navbar-table">
           {session ? (
             <Link className="navbar-title" href="/">
@@ -97,7 +97,7 @@ export default async function Home() {
       </div>
 
       <div className="category-pm-frame">
-        <div className="category">
+        <div className="category animate__animated animate__slideInLeft">
           <Link href="/category/top">
             <span>상의</span>
           </Link>
@@ -123,7 +123,7 @@ export default async function Home() {
             <span style={{ marginBottom: "0px" }}>패션소품</span>
           </Link>
         </div>
-        <div className="main-pm-frame">
+        <div className="main-pm-frame animate__animated animate__fadeIn">
           <PmList result={result} />
         </div>
       </div>

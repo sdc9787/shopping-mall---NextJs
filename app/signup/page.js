@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function SignUp() {
   return (
-    <div className="signup-frame">
-      <div className="signup-main">
+    <div className="signup-frame ">
+      <div className="signup-main animate__animated animate__fadeIn">
         <Link href="/">
           <div className="go-index">
             <FontAwesomeIcon icon={faArrowLeft} />

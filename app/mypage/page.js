@@ -87,8 +87,8 @@ export default async function Mypage() {
         </div>
       </div>
 
-      <h4 className="create-title">메인페이지</h4>
-      <div className="create-frame">
+      <h4 className="create-title animate__animated animate__fadeIn">메인페이지</h4>
+      <div className="create-frame animate__animated animate__fadeIn">
         <form className="create-form" action="/api/mypage" method="POST">
           <div className="product-info">
             <span style={{ fontWeight: "700" }}>현재 비밀번호</span>

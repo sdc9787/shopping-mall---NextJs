@@ -98,14 +98,14 @@ export default async function Pm() {
         </div>
       </div>
 
-      <div className="pm-title">
+      <div className="pm-title animate__animated animate__fadeIn">
         <span>상품관리</span>
         <Link href={"/create"} className="pm-create">
           상품등록
         </Link>
       </div>
 
-      <div className="basket">
+      <div className="basket animate__animated animate__fadeIn">
         <div className="list-bg">
           <ListItem result={result} />
         </div>

@@ -132,8 +132,10 @@ export default async function Search(props) {
             <span style={{ marginBottom: "0px" }}>패션소품</span>
           </Link>
         </div>
-        <span style={{ marginLeft: "120px", fontSize: "25px", fontWeight: "700" }}>검색결과 : {keyword}</span>
-        <div className="main-pm-frame">
+        <span className="animate__animated animate__fadeIn" style={{ marginLeft: "120px", fontSize: "25px", fontWeight: "700" }}>
+          검색결과 : {keyword}
+        </span>
+        <div className="main-pm-frame animate__animated animate__fadeIn">
           <SearchItem result={result} />
         </div>
       </div>
