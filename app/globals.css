@@ -13,29 +13,38 @@ html {
 }
 
 .main-pm-frame {
-  margin-left: 100px;
 }
 
 .main-pm-list {
   display: flex;
-
   flex-wrap: wrap;
   align-items: center;
   justify-content: start;
+}
+
+.pm-Link {
+  margin-left: 80px;
 }
 .pm-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px;
-  margin-right: 80px;
 }
 
 .pm-list img {
+  margin: 20px;
   border: 3px solid gray;
   border-radius: 20px;
   width: 250px;
+  height: 250px;
+  transition: 0.2s all ease-in-out;
+}
+
+.pm-list img:hover {
+  width: 270px;
+  height: 270px;
+  margin: 10px;
 }
 
 .pm-list h4 {
@@ -82,6 +91,11 @@ html {
   font-weight: 900;
   background-color: #c7bde2;
   cursor: pointer;
+}
+
+.category-select2 {
+  font-weight: 900;
+  background-color: #c7bde2;
 }
 
 .no-result-message {

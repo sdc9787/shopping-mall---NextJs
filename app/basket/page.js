@@ -47,7 +47,7 @@ export default async function Basket() {
 
           {session ? (
             session.user.root == 1 ? (
-              <Link className="navbar-a" href="/basket">
+              <Link className="navbar-a select" href="/basket">
                 장바구니
               </Link>
             ) : (

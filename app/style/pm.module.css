@@ -96,3 +96,8 @@ a {
   justify-content: center;
   align-items: flex-end;
 }
+
+.select {
+  font-weight: 700;
+  background-color: #c7bde2;
+}

@@ -9,7 +9,7 @@ export default function SearchList({ result }) {
   return (
     <div className="main-pm-list">
       {result.map((a, i) => (
-        <Link href={"/buy/" + result[i]._id.toString()}>
+        <Link className="pm-Link" href={"/buy/" + result[i]._id.toString()}>
           <div className="pm-list" key={i}>
             <img src={"/uploads/" + result[i].myImage} />
             <h4>{result[i].name}</h4>

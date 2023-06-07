@@ -128,29 +128,21 @@ export default async function Category(props) {
 
       <div className="category-pm-frame">
         <div className="category">
-          <Link href="/category/top">
-            <span>상의</span>
-          </Link>
-          <Link href="/category/pants">
-            <span>하의</span>
-          </Link>
-          <Link href="/category/shoes">
-            <span>신발</span>
-          </Link>
-          <Link href="/category/onepiece">
-            <span>원피스</span>
-          </Link>
-          <Link href="/category/outer">
-            <span>아우터</span>
-          </Link>
-          <Link href="/category/bag">
-            <span>가방</span>
-          </Link>
-          <Link href="/category/socks">
-            <span>양말</span>
-          </Link>
+          <Link href="/category/top">{category == "상의" ? <span className="category-select2">상의</span> : <span>상의</span>}</Link>
+          <Link href="/category/pants">{category == "하의" ? <span className="category-select2">하의</span> : <span>하의</span>}</Link>
+          <Link href="/category/shoes">{category == "신발" ? <span className="category-select2">신발</span> : <span>신발</span>}</Link>
+          <Link href="/category/onepiece">{category == "원피스" ? <span className="category-select2">원피스</span> : <span>원피스</span>}</Link>
+          <Link href="/category/outer">{category == "아우터" ? <span className="category-select2">아우터</span> : <span>아우터</span>}</Link>
+          <Link href="/category/bag">{category == "가방" ? <span className="category-select2">가방</span> : <span>가방</span>}</Link>
+          <Link href="/category/socks">{category == "양말" ? <span className="category-select2">양말</span> : <span>양말</span>}</Link>
           <Link href="/category/jewelry">
-            <span style={{ marginBottom: "0px" }}>패션소품</span>
+            {category == "패션소품" ? (
+              <span className="category-select2" style={{ marginBottom: "0px" }}>
+                패션소품
+              </span>
+            ) : (
+              <span style={{ marginBottom: "0px" }}>패션소품</span>
+            )}
           </Link>
         </div>
         <span style={{ marginLeft: "120px", fontSize: "25px", fontWeight: "700" }}>카테고리 : {category}</span>

@@ -60,7 +60,7 @@ export default async function Pm() {
 
           {session ? (
             session.user.root == 0 ? (
-              <Link className="navbar-a" href="/pm">
+              <Link className="navbar-a select" href="/pm">
                 상품관리
               </Link>
             ) : (

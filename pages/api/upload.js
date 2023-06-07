@@ -18,7 +18,7 @@ export default async (req, res) => {
       console.log(fields, files);
       console.log(files.file.filepath);
       var oldPath = files.file.filepath;
-      var newPath = `./public/uploads/${parseInt(Date.now() / 1000)}${files.file.originalFilename}`;
+      var newPath = `./public/uploads/${parseInt(Date.now() / 10000)}${files.file.originalFilename}`;
       mv(oldPath, newPath, function (err) {});
       res.status(200).json({ fields, files });
     });

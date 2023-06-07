@@ -110,10 +110,11 @@
 }
 
 .search {
-  width: 400px;
+  width: 300px;
   padding: 10px 15px;
   margin: 0px 10px;
   border-radius: 20px;
+  transition: 0.3s all ease-in-out;
 }
 
 .session-login {
@@ -143,4 +144,8 @@
 
 .search-icon {
   position: relative;
+}
+
+.search:focus {
+  width: 500px;
 }

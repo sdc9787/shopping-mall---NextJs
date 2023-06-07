@@ -24,7 +24,7 @@ export default async function Mypage() {
           )}
 
           {session ? (
-            <Link className="navbar-a" href="/mypage">
+            <Link className="navbar-a select" href="/mypage">
               마이페이지
             </Link>
           ) : (
