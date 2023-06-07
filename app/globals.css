@@ -12,9 +12,6 @@ html {
   background-color: #fcfcfe;
 }
 
-.main-pm-frame {
-}
-
 .main-pm-list {
   display: flex;
   flex-wrap: wrap;
